@@ -1,0 +1,67 @@
+{
+    "menuList": [
+        {
+            "id": 1,
+            "service": "HD makeup",
+            "desc": "HD face makeup | Sweat proof | Hairstyle | 1 Saree pleating or drapping",
+            "complementary": "Artificial flowers | Lashes",
+            "price": "7,999"
+        },
+        {
+            "id": 2,
+            "service": "Standard makeup",
+            "desc": "Face makeup | Hairstyle | 1 Saree pleating or drapping",
+            "complementary": "Artificial flowers",
+            "price": "6,500"
+        },
+        {
+            "id": 3,
+            "service": "Portrait Mehandi (Hand)",
+            "desc": "A style of mehandi or henna that involves creating a detailed portraits on bride's hand or arm using the mehandi paste.",
+            "complementary": "",
+            "price": "3,999"
+        },
+        {
+            "id": 4,
+            "service": "Pattern Mehandi (Hand)",
+            "desc": "An art of drawing the patterns, rangoli or traditional designs oh bride's hand",
+            "complementary": "",
+            "price": "1,999"
+        },
+        {
+            "id": 5,
+            "service": "Mehandi on legs",
+            "desc": "Intricate henna art covering the fingers and ankle area of your leg beautifully. This design also covers the lower side of your leg adding an aesthetic touch to your look",
+            "complementary": "",
+            "price": "999"
+        },
+        {
+            "id": 6,
+            "service": "Jewellary set",
+            "desc": "Antique silver & gold themed bridal jewellary sets available",
+            "complementary": "",
+            "price": "999"
+        },
+        {
+            "id": 7,
+            "service": "Advanced facial",
+            "desc": "Aroma | Diamond | Hydro facial",
+            "complementary": "",
+            "price": "1,200"
+        },
+        {
+            "id": 8,
+            "service": "Fruit facial",
+            "desc": "A skincare indulgence that taps into the richness of natural fruits for a cleansing, exfoliating, and nourishing experience",
+            "complementary": "",
+            "price": "399"
+        },
+        {
+            "id": 9,
+            "service": "Threading",
+            "desc": "To give an aesthetic look of eyebrows by removing excess of hair",
+            "complementary": "",
+            "price": "50"
+        }
+    ]
+}
