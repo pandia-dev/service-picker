@@ -2,17 +2,15 @@ fetch('menu.json')
     .then(response => response.json())
     .then(data => {
         debugger
-        data.menuList.forEach(element => {
+        data.menuList.forEach((element) => {
             // Getting parent element
             const menuList = document.getElementById("menu-list");
 
             // Creation of children
             const menuCard = document.createElement('div');
-
             const firstRow = document.createElement('div');
             const name = document.createElement('span');
             const addButton = document.createElement('button');
-
             const secondRow = document.createElement('div');
             const desc = document.createElement('span');
             const price = document.createElement('small');
@@ -27,7 +25,7 @@ fetch('menu.json')
             desc.className = "service-desc";
             desc.innerText = element.desc;
             price.className = "service-price";
-            price.innerText = element.price;
+            price.innerText = "₹" + element.price;
 
             // Append children
             menuList.appendChild(menuCard);

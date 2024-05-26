@@ -14,13 +14,17 @@ body {
     height: calc(100vh - 1em);
     gap: 1em;
     padding-top: 1em;
-    background: white;
+    background: black;;
 }
 
 #menu-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    overflow: auto;
     width: calc(50vw - 1.5em);
     height: calc(100vh - 2em);
-    background: linear-gradient(#1b00ff9c, #f000fd);
+    background: linear-gradient(#f000fd, #1b00ff9c);
     border-radius: 1.2em;
 }
 
@@ -35,12 +39,12 @@ body {
     display: flex;
     flex-direction: column;
     gap: 0.5em;
-    background: white;  /* For browsers that do not support gradients */
-    background-image: linear-gradient(to right, #d90404f0, yellow);
+    background-image: linear-gradient(to left, #1b00ff9c, #f000fd);
     margin: 5px;
     border-radius: 5px;
     padding: 5px;
     box-shadow: 0 4px 7px 1px black;
+    cursor: pointer;
 }
 
 #cart-title {
@@ -53,15 +57,19 @@ body {
 
 .service-name {
     font-weight: bold;
-    color: white;
+    color: black;
+    padding: 5px;
+    background-image: linear-gradient(45deg, #d90404f0, yellow);
+    border-radius: 0 10px;
 }
 
 .service-desc {
-    color: Nunito;
+    font-family: Nunito;
 }
 
 .service-price {
     font-weight: bold;
+    color: white;
 }
 
 h3 {
@@ -80,8 +88,17 @@ h3 {
     justify-content: space-between;
     flex-wrap: nowrap;
     flex-direction: row;
+    gap: 0.3em;
 }
 
 button {
     cursor: pointer;
+    color: white;
+    background: darkmagenta;
+    border: none;
+    box-shadow: 1px 1px 5px 1px black;
+}
+
+div::-webkit-scrollbar {
+    width: 12px;
 }
