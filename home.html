@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My First HTML Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+            font-family: sans-serif, Arial;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            color: #fff;
+            margin: 5px;
+            background-image: linear-gradient(to bottom right, rgb(110 100 255), rgb(235, 19, 181));
+            padding: 10px;
+            text-align: center;
+            border-radius: 0 5em 0 5em;
+            box-shadow: -5px 4px 10px 6px rgb(0 0 0 / 14%);
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+        footer {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1em;
+            background-image: linear-gradient(to left, rgb(110 100 255), rgb(235, 19, 181));
+            color: #fff;
+            text-align: center;
+            padding: 5px 0;
+            position: relative;
+            width: 100%;
+            bottom: 0;
+        }
+
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .card {
+            background-color: #f5d5f0;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 300px;
+            text-align: center;
+            flex: 1 0 auto;
+            margin: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeIn 1s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .card h3 {
+            color: #ff6699;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .card .price {
+            color: #333;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        .card .fa {
+            color: #ff6699;
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .card .button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 10px;
+            border: none;
+            background-color: #ff6699;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+        }
+
+        .card .button:hover {
+            background-color: #e60073;
+        }
+
+        .about-us {
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            flex: 1 0 auto;
+            margin: 20px;
+        }
+
+        .about-us p {
+            text-align: left;
+        }
+
+        .google-review {
+            width: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Welcome to Being Princess</h1>
+        <h3>Shine like a star</h3>
+    </header>
+    <main>
+        <!-- <h3>About Us</h3>
+        <p>At Being Princess, our mission is to make you feel beautiful and confident. We are committed to
+            delivering exceptional service, using only the highest quality products and the latest techniques in the
+            beauty industry. Our serene and welcoming environment ensures that every visit is a blissful retreat from
+            the hustle and bustle of everyday life. We are dedicated to ensuring that you receive personalized care and attention. We offer a wide range of services, including hair styling, skincare treatments, manicures, pedicures, and more. Each service is designed to enhance your natural beauty and leave you feeling refreshed and confident.</p>
+        <h3>Our Services</h3>
+        <ul>
+            <li><i class="fa fa-scissors"></i> Haircuts & Styling</li>
+            <li><i class="fa fa-paint-brush"></i> Hair Coloring</li>
+            <li><i class="fa fa-magic"></i> Hair Treatments</li>
+            <li><i class="fa fa-female"></i> Facials</li>
+            <li><i class="fa fa-leaf"></i> Skin Treatments</li>
+            <li><i class="fa fa-heart"></i> Manicures & Pedicures</li>
+            <li><i class="fa fa-smile-o"></i> Makeup Services</li>
+            <li><i class="fa fa-lemon-o"></i> Body Scrubs</li>
+            <li><i class="fa fa-hand-paper-o"></i> Waxing</li>
+        </ul>
+        <h3>Click on the card to add it in cart</h3> -->
+        <div class="card-container">
+            <div class="card">
+                <i class="fa fa-scissors"></i>
+                <h3>Haircuts & Styling</h3>
+                <p>Experience the best haircuts and styling services tailored to your unique look. Our expert stylists
+                    ensure you leave feeling refreshed and confident.</p>
+                <p class="price">₹50</p>
+                <a href="#" class="button">Add</a>
+            </div>
+
+            <div class="card">
+                <i class="fa fa-paint-brush"></i>
+                <h3>Hair Coloring</h3>
+                <p>Transform your look with our professional hair coloring services. Our experts use high-quality
+                    products to achieve vibrant and long-lasting colors.</p>
+                <p class="price">₹70</p>
+                <a href="#" class="button">Add</a>
+            </div>
+
+            <div class="card">
+                <i class="fa fa-magic"></i>
+                <h3>Hair Treatments</h3>
+                <p>Indulge in our luxurious hair treatments designed to nourish and revitalize your hair. From deep
+                    conditioning to scalp massages, we offer a range of treatments to enhance the health and beauty of
+                    your hair.</p>
+                <p class="price">₹80</p>
+                <a href="#" class="button">Add</a>
+            </div>
+
+            <div class="card">
+                <i class="fa fa-female"></i>
+                <h3>Facials</h3>
+                <p>Revitalize your skin with our rejuvenating facial treatments. Our skilled estheticians will customize
+                    a facial regimen tailored to your skin type and concerns, leaving you with a radiant and youthful
+                    glow.</p>
+                <p class="price">₹90</p>
+                <a href="#" class="button">Add</a>
+            </div>
+
+            <div class="card">
+                <i class="fa fa-leaf"></i>
+                <h3>Skin Treatments</h3>
+                <p>Revitalize your skin with our range of skin treatments tailored to address various concerns such as
+                    acne, aging, and dullness. Our expert estheticians use advanced techniques and high-quality products
+                    to rejuvenate and nourish your skin.</p>
+                <p class="price">₹100</p>
+                <a href="#" class="button">Add</a>
+            </div>
+
+            <div class="card">
+                <i class="fa fa-heart"></i>
+                <h3>Manicures & Pedicures</h3>
+                <p>Pamper your hands and feet with our luxurious manicures and pedicures. Our skilled technicians will
+                    rejuvenate your nails and cuticles, leaving them looking and feeling fabulous.</p>
+                <p class="price">₹120</p>
+                <a href="#" class="button">Add</a>
+            </div>
+        </div>
+        <div class="about-us">
+            <h3>About Us</h3>
+            <p> At Being Princess, our mission is to make you feel beautiful and confident. We are committed to
+                delivering exceptional service, using only the highest quality products and the latest techniques in the
+                beauty industry. Our serene and welcoming environment ensures that every visit is a blissful retreat
+                from
+                the hustle and bustle of everyday life. We are dedicated to ensuring that you receive personalized care
+                and attention. We offer a wide range of services, including hair styling, skincare treatments,
+                manicures, pedicures, and more. Each service is designed to enhance your natural beauty and leave you
+                feeling refreshed and confident.</p>
+            <img class="google-review" src="images/google-reviews.png" alt="Description of the image">
+        </div>
+    </main>
+    <footer>
+        <div><i class="fa fa-whatsapp"></i> +91 63918 68813 </div>
+        <div><i class="fa fa-phone"></i> +91 86084 47437</div>
+        <div><i class="fa fa-instagram"></i> being_princess_official</div>
+        <div><i class="fa fa-envelope"></i> being.princess.parlour@gmail.com</div>
+    </footer>
+</body>
+
+</html>
