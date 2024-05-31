@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Being Princess</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+            font-family: sans-serif, Arial;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            color: #fff;
+            margin: 5px;
+            background-image: linear-gradient(to bottom right, rgb(110 100 255), rgb(235, 19, 181));
+            padding: 10px;
+            text-align: center;
+            border-radius: 0 5em 0 5em;
+            box-shadow: -5px 4px 10px 6px rgb(0 0 0 / 14%);
+        }
+
+
+        footer {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1em;
+            background-image: linear-gradient(to left, rgb(110 100 255), rgb(235, 19, 181));
+            color: #fff;
+            text-align: center;
+            padding: 5px 0;
+            position: relative;
+            width: 100%;
+            bottom: 0;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+
+        .google-review {
+            width: 250px;
+        }
+
+        .login-box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* min-height: 50vh; */
+            /* background: rgb(90, 81, 81); */
+            border-radius: 20px;
+            /* width: 400px;
+            height: 550px; */
+            /* margin: auto;    */
+            margin-bottom: 10px;   
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        .input-box {
+            position: relative;
+            border-bottom: 2px solid black;
+            /* width: 310px; */
+            margin: 30px 0;
+        }
+
+        .input-box label {
+            position: absolute;
+            top: 20%;
+            left: 5px;
+            transform: translateY(-50%);
+            font-size: 1em;
+            color: black;
+            pointer-events: none;
+            transition: .5s;
+        }
+
+        .input-box input:focus~label,
+        .input-box input:valid~label {
+            top: -5px;
+        }
+
+        .input-box input {
+            width: 100%;
+            height: 50px;
+            background: transparent;
+            border: none;
+            outline: none;
+            font-size: 1em;
+            color: black;
+            padding: 0 35px 0 5px;
+        }
+
+        .input-box .icon {
+            position: absolute;
+            right: 8px;
+            color: black;
+            font-size: 1.2em;
+            line-height: 57px;
+        }
+
+        button {
+            width: 100%;
+            height: 40px;
+            background-image: linear-gradient(to left, rgb(248, 126, 235), rgb(156, 120, 248));
+            border: none;
+            outline: none;
+            border-radius: 40px;
+            cursor: pointer;
+            font-size: 1em;
+            color: black;
+            font-weight: 400px;
+        }
+
+        input[type="time"]::-webkit-calendar-picker-indicator {
+            display: none;
+        }
+
+        input[type="date"]::-webkit-calendar-picker-indicator {
+            display: none;
+        }
+
+        /* input[type=date]::-webkit-datetime-edit-text {
+            -webkit-appearance: none;
+            display: none;
+        }
+
+        input[type=date]::-webkit-datetime-edit-month-field {
+            -webkit-appearance: none;
+            display: none;
+        }
+
+        input[type=date]::-webkit-datetime-edit-day-field {
+            -webkit-appearance: none;
+            display: none;
+        }
+
+        input[type=date]::-webkit-datetime-edit-year-field {
+            -webkit-appearance: none;
+            display: none;
+        } */
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Being Princess</h1>
+        <h4>Shine like a star</h4>
+    </header>
+    <div class="login-box">
+        <form action="">
+            <h2>Schedule your slot</h2>
+            <div class="input-box">
+                <span class="icon"><i class="fa fa-user"></i></span>
+                <input type="text" required>
+                <label>Name</label>
+            </div>
+            <div class="input-box">
+                <span class="icon"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+                <input type="email" required>
+                <label>Email</label>
+            </div>
+            <div class="input-box">
+                <span class="icon"><i class="fa fa-phone" aria-hidden="true"></i></span>
+                <input type="text" required>
+                <label>Phone number</label>
+            </div>
+            <div class="input-box">
+                <span class="icon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                <input type="date" required>
+                <label>Date</label>
+            </div>
+            <div class="input-box">
+                <span class="icon"><i class="fa fa-clock-o" aria-hidden="true"></i></span>
+                <input type="time" required>
+                <label>Time</label>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <script>
+    </script>
+    <footer>
+        <div><i class="fa fa-whatsapp"></i> +91 63918 68813 </div>
+        <div><i class="fa fa-phone"></i> +91 86084 47437</div>
+        <div><i class="fa fa-instagram"></i> being_princess_official</div>
+        <div><i class="fa fa-envelope"></i> being.princess.parlour@gmail.com</div>
+    </footer>
+</body>
+
+</html>

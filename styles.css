@@ -39,7 +39,8 @@ body {
     display: flex;
     flex-direction: column;
     gap: 0.5em;
-    background-image: linear-gradient(to left, #1b00ff9c, #f000fd);
+    /* background-image: linear-gradient(to left, #1b00ff9c, #f000fd); */
+    background-image: linear-gradient(to left, rgb(248, 126, 235), rgb(156, 120, 248));
     margin: 5px;
     border-radius: 5px;
     padding: 5px;
