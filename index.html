@@ -4,42 +4,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Service Picker</title>
+    <title>Being Princess</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <div class="main-container">
-        <div id="menu-list">
-            <h3 id="menu-title">Menu</h3>
-            <!-- <div class="menu-card">
-                <div class="item-name">
-                    <span class="service-name">HD makeup</span>
-                    <button>+</button
-                </div>
-                <div class="item-detail">
-                    <span class="service-desc">Description</span>
-                    <small class="service-price">₹7999.00</small>
-                </div>
-            </div> -->
-        </div>
-        <div id="picked-list">
-            <h3 id="cart-title">Cart</h3>
-            <div class="menu-card">
-                <div class="item-name">
-                    <span class="service-name">Standard makeup</span>
-                    <button>x</button>
-                </div>
-                <div class="item-detail">
-                    <span class="service-desc">Face makeup | Hairstyle | 1 Saree pleating or drapping</span>
-                    <small class="service-price">₹6,500</small>
-                </div>
+    <header>
+        <h1>Being Princess</h1>
+        <h4>Shine like a star</h4>
+    </header>
+    <main>
+        <div class="card-container">
+            <div class="card" onclick="onAppointment()">
+                <i class="fa fa-clock-o"></i>
+                <h3>Get Appointment</h3>
+                <p>Feel yourself as comfort by taking the Skin, hair & body-decor services with us</p>
+            </div>
+
+            <div class="card" onclick="onBookEvent()">
+                <i class="fa fa-calendar"></i>
+                <h3>Book Event</h3>
+                <p>Transform yourself to the most beautiful version of you on your most precious day. Book our calendar for your bridal or puberty event</p>
+            </div>
+
+            <div class="card" onclick="onGallery()">
+                <i class="fa fa-photo"></i>
+                <h3>Gallery</h3>
+                <p>Here you can check our works & witness our happy customers</p>
             </div>
         </div>
-    </div>
-    <script src="script.js"></script>
+        <div class="about-us">
+            <h3 class="headings">About Us</h3>
+            <p> At Being Princess, our mission is to make you feel beautiful and confident. We are committed to
+                delivering exceptional service, using only the highest quality products and the latest techniques in the
+                beauty industry. Our serene and welcoming environment ensures that every visit is a blissful retreat
+                from
+                the hustle and bustle of everyday life. We are dedicated to ensuring that you receive personalized care
+                and attention. We offer a wide range of services, including hair styling, skincare treatments,
+                manicures, pedicures, and more. Each service is designed to enhance your natural beauty and leave you
+                feeling refreshed and confident.</p>
+            <img class="google-review" src="images/google-reviews.png" alt="Description of the image">
+        </div>
+    </main>
+    <footer>
+        <div><i class="fa fa-whatsapp"></i> +91 63918 68813 </div>
+        <div><i class="fa fa-phone"></i> +91 86084 47437</div>
+        <div><i class="fa fa-instagram"></i> being_princess_official</div>
+        <div><i class="fa fa-envelope"></i> being.princess.parlour@gmail.com</div>
+    </footer>
+
+    <script>
+        function onAppointment() {
+            window.location.href = 'appointment.html';
+        }
+        function onBookEvent() {
+            window.location.href = 'booking.html';
+        }
+        function onGallery() {
+            window.location.href = 'gallery.html';
+        }
+    </script>
 </body>
 
 </html>

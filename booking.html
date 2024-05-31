@@ -7,143 +7,6 @@
     <title>Being Princess</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="styles.css">
-
-    <style>
-        body {
-            font-family: sans-serif, Arial;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-
-        header {
-            color: #fff;
-            margin: 5px;
-            background-image: linear-gradient(to bottom right, rgb(110 100 255), rgb(235, 19, 181));
-            padding: 10px;
-            text-align: center;
-            border-radius: 0 5em 0 5em;
-            box-shadow: -5px 4px 10px 6px rgb(0 0 0 / 14%);
-        }
-
-        main {
-            padding: 20px;
-        }
-
-        ul {
-            list-style-type: none;
-        }
-
-        footer {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 1em;
-            background-image: linear-gradient(to left, rgb(110 100 255), rgb(235, 19, 181));
-            color: #fff;
-            text-align: center;
-            padding: 5px 0;
-            position: relative;
-            width: 100%;
-            bottom: 0;
-        }
-
-        .card-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .card {
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            max-width: 300px;
-            text-align: center;
-            flex: 1 0 auto;
-            margin: 10px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            animation: fadeIn 1s ease;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: scale(0.9);
-            }
-
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        .card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        }
-
-        .card h3 {
-            color: #ff6699;
-            margin-bottom: 10px;
-        }
-
-        .card p {
-            color: #555;
-            margin-bottom: 20px;
-        }
-
-        .card .price {
-            color: #333;
-            font-size: 1.2em;
-            font-weight: bold;
-        }
-
-        .card .fa {
-            color: #ff6699;
-            font-size: 2em;
-            margin-bottom: 10px;
-        }
-
-        .card .button {
-            display: inline-block;
-            padding: 10px 20px;
-            margin-top: 10px;
-            border: none;
-            background-image: linear-gradient(to left, rgb(248, 126, 235), rgb(156, 120, 248));
-            /* background: linear-gradient(to bottom right, rgb(110 100 255), rgb(235, 19, 181)); */
-            color: white;
-            border-radius: 5px;
-            text-decoration: none;
-            font-size: 1em;
-            transition: background-color 0.3s ease;
-        }
-
-        .card .button:hover {
-            background-color: #e60073;
-        }
-
-        .about-us {
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            text-align: center;
-            flex: 1 0 auto;
-            margin: 20px;
-        }
-
-        .about-us p {
-            text-align: left;
-        }
-
-        .google-review {
-            width: 250px;
-        }
-
-        
-    </style>
 </head>
 
 <body>
@@ -152,25 +15,9 @@
         <h4>Shine like a star</h4>
     </header>
     <main>
-
-        <!-- <div class="linear-card">
-            Adding the services to the cart & booking screen will come here!
-        </div> -->
-        <!-- <div id="picked-list"> -->
-            <h3 id="cart-title">Cart</h3>
-            <div class="menu-card">
-                <div class="item-name">
-                    <span class="service-name">Standard makeup</span>
-                    <button>x</button>
-                </div>
-                <div class="item-detail">
-                    <span class="service-desc">Face makeup | Hairstyle | 1 Saree pleating or drapping</span>
-                    <small class="service-price">₹6,500</small>
-                </div>
-            </div>
-        <!-- </div> -->
+        <div id="booking-card-container"></div>
         <div class="about-us">
-            <h3>About Us</h3>
+            <h3 class="headings">About Us</h3>
             <p> At Being Princess, our mission is to make you feel beautiful and confident. We are committed to
                 delivering exceptional service, using only the highest quality products and the latest techniques in the
                 beauty industry. Our serene and welcoming environment ensures that every visit is a blissful retreat
@@ -188,6 +35,59 @@
         <div><i class="fa fa-instagram"></i> being_princess_official</div>
         <div><i class="fa fa-envelope"></i> being.princess.parlour@gmail.com</div>
     </footer>
+    <script>
+        fetch('menu.json')
+            .then(response => response.json())
+            .then(data => {
+                debugger
+                data.eventBooking.forEach((element) => {
+                    // Getting parent element
+                    const menuList = document.getElementById("booking-card-container");
+
+                    // Creation of children
+                    const menuCard = document.createElement('div');
+                    const firstRow = document.createElement('div');
+                    const name = document.createElement('h3');
+                    const plusMinus = document.createElement('span');
+                    const plusButton = document.createElement('button');
+                    const minusButton = document.createElement('button');
+                    const secondRow = document.createElement('div');
+                    const desc = document.createElement('span');
+                    const thirdRow = document.createElement('div');
+                    const price = document.createElement('small');
+
+                    // Assigning attributes to elements
+                    menuCard.className = "booking-card";
+                    firstRow.className = "first-row";
+                    name.className = "service-name";
+                    name.innerText = element.service;
+                    plusMinus.className = "plus-minus";
+                    plusButton.className = "plus-button";
+                    plusButton.innerHTML = "+";
+                    minusButton.className = "minus-button";
+                    minusButton.innerHTML = "-";
+                    secondRow.className = "second-row";
+                    desc.className = "service-desc";
+                    desc.innerText = element.desc;
+                    thirdRow.className = "third-row";
+                    price.className = "service-price";
+                    price.innerText = "₹" + element.price;
+
+                    // Append children
+                    menuList.appendChild(menuCard);
+                    menuCard.appendChild(firstRow);
+                    menuCard.appendChild(secondRow);
+                    menuCard.appendChild(thirdRow);
+                    firstRow.appendChild(name);
+                    firstRow.appendChild(plusMinus);
+                    plusMinus.appendChild(plusButton);
+                    plusMinus.appendChild(minusButton);
+                    secondRow.appendChild(desc);
+                    thirdRow.appendChild(price);
+                });
+            })
+            .catch(error => console.error('Error fetching JSON:', error));
+    </script>
 </body>
 
 </html>

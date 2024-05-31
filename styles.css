@@ -1,105 +1,324 @@
+/* ------------ Common ------------ */
 body {
-    font-family: 'Montserrat';
-    font-size: medium;
+    font-family: sans-serif, Arial;
     margin: 0;
     padding: 0;
-    background: white;
+    background-color: #f4f4f4;
 }
 
-.main-container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: center;
-    height: calc(100vh - 1em);
-    gap: 1em;
-    padding-top: 1em;
-    background: black;;
-}
-
-#menu-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5em;
-    overflow: auto;
-    width: calc(50vw - 1.5em);
-    height: calc(100vh - 2em);
-    background: linear-gradient(#f000fd, #1b00ff9c);
-    border-radius: 1.2em;
-}
-
-#picked-list {
-    width: calc(50vw - 1.5em);
-    height: calc(100vh - 2em);
-    background: linear-gradient(#1b00ff9c, #f000fd);
-    border-radius: 1.2em;
-}
-
-.menu-card {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5em;
-    /* background-image: linear-gradient(to left, #1b00ff9c, #f000fd); */
-    background-image: linear-gradient(to left, rgb(248, 126, 235), rgb(156, 120, 248));
+header {
+    color: #fff;
     margin: 5px;
-    border-radius: 5px;
-    padding: 5px;
-    box-shadow: 0 4px 7px 1px black;
-    cursor: pointer;
+    background-image: linear-gradient(to bottom right, rgb(110 100 255), rgb(235, 19, 181));
+    padding: 10px;
+    text-align: center;
+    border-radius: 0 5em 0 5em;
+    box-shadow: -5px 4px 10px 6px rgb(0 0 0 / 14%);
 }
 
-#cart-title {
-    color: white;
+main {
+    padding: 20px;
 }
 
-#menu-title {
-    color: white;
+ul {
+    list-style-type: none;
 }
 
-.service-name {
-    font-weight: bold;
-    color: black;
-    padding: 5px;
-    background-image: linear-gradient(45deg, #d90404f0, yellow);
-    border-radius: 0 10px;
+.about-us {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    flex: 1 0 auto;
+    margin: 20px;
 }
 
-.service-desc {
-    font-family: Nunito;
+.about-us p {
+    text-align: left;
 }
 
-.service-price {
-    font-weight: bold;
-    color: white;
+.google-review {
+    width: 250px;
 }
 
-h3 {
-    padding-left: 5px;
-}
-
-.item-name {
+footer {
     display: flex;
-    justify-content: space-between;
-    flex-wrap: nowrap;
     flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1em;
+    background-image: linear-gradient(to left, rgb(110 100 255), rgb(235, 19, 181));
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    position: relative;
+    width: 100%;
+    bottom: 0;
 }
 
-.item-detail {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: nowrap;
-    flex-direction: row;
-    gap: 0.3em;
-}
-
-button {
-    cursor: pointer;
-    color: white;
-    background: darkmagenta;
+form button {
+    width: 100%;
+    height: 40px;
+    background-image: linear-gradient(to left, rgb(248, 126, 235), rgb(156, 120, 248));
     border: none;
-    box-shadow: 1px 1px 5px 1px black;
+    outline: none;
+    border-radius: 40px;
+    cursor: pointer;
+    font-size: 1em;
+    color: black;
+    font-weight: 400px;
 }
 
-div::-webkit-scrollbar {
-    width: 12px;
+.headings {
+    color: #24a50e;
+    text-align: center;
 }
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* ------------ Booking ------------*/
+
+#booking-card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.booking-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 300px;
+    text-align: center;
+    flex: 1 0 auto;
+    margin: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: fadeIn 1s ease;
+}
+
+.booking-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.booking-card h3 {
+    color: #b918cb;
+    margin-bottom: 10px;
+}
+
+.booking-card p {
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.booking-card .price {
+    color: #333;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.booking-card .fa {
+    color: #24a50e;
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.first-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.plus-minus {
+    padding-top: 1.2em;
+}
+
+.plus-button, .minus-button {
+    background: #24a50e;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 5px;
+    width: 20px;
+    box-shadow: 1px 1px 4px 0px black;
+}
+
+.service-price{
+    display: inline-block;
+    padding: 5px 10px;
+    margin-top: 10px;
+    border: none;
+    background: linear-gradient(to bottom right, rgb(110 100 255), rgb(235, 19, 181));
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+/* ------------ Appointment ------------ */
+
+.card .button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 10px;
+    border: none;
+    background: linear-gradient(to bottom right, rgb(110 100 255), rgb(235, 19, 181));
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+.card .button:hover {
+    background-color: #e60073;
+}
+
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.card {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 300px;
+    text-align: center;
+    flex: 1 0 auto;
+    margin: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: fadeIn 1s ease;
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card h3 {
+    color: #b918cb;
+    margin-bottom: 10px;
+}
+
+.card p {
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.card .price {
+    color: #333;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.card .fa {
+    color: #24a50e;
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+/* ------------ Appointment Form ------------ */
+
+.login-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* min-height: 50vh; */
+    /* background: rgb(90, 81, 81); */
+    border-radius: 20px;
+    /* width: 400px;
+    height: 550px; */
+    /* margin: auto;    */
+    margin-bottom: 10px;   
+}
+
+.input-box {
+    position: relative;
+    border-bottom: 2px solid black;
+    /* width: 310px; */
+    margin: 30px 0;
+}
+
+.input-box label {
+    position: absolute;
+    top: 20%;
+    left: 5px;
+    transform: translateY(-50%);
+    font-size: 1em;
+    color: black;
+    pointer-events: none;
+    transition: .5s;
+}
+
+.input-box input:focus~label,
+.input-box input:valid~label {
+    top: -5px;
+}
+
+.input-box input {
+    width: 100%;
+    height: 50px;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1em;
+    color: black;
+    padding: 0 35px 0 5px;
+}
+
+.input-box .icon {
+    position: absolute;
+    right: 8px;
+    color: black;
+    font-size: 1.2em;
+    line-height: 57px;
+}
+
+input[type="time"]::-webkit-calendar-picker-indicator {
+    display: none;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+}
+
+/* input[type=date]::-webkit-datetime-edit-text {
+    -webkit-appearance: none;
+    display: none;
+}
+
+input[type=date]::-webkit-datetime-edit-month-field {
+    -webkit-appearance: none;
+    display: none;
+}
+
+input[type=date]::-webkit-datetime-edit-day-field {
+    -webkit-appearance: none;
+    display: none;
+}
+
+input[type=date]::-webkit-datetime-edit-year-field {
+    -webkit-appearance: none;
+    display: none;
+} */
