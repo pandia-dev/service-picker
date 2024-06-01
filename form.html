@@ -50,6 +50,35 @@
         const params = new URLSearchParams(queryString);
         const serviceName = params.get('serviceName');
         document.getElementById("title").innerHTML = "Schedule your slot for " + serviceName;
+
+        document.getElementById("scheduleForm").addEventListener("submit", function (event) {
+            event.preventDefault(); // Prevents the default form submission
+
+            // Get form values
+            var name = document.getElementById("nameInput").value;
+            var email = document.getElementById("emailInput").value;
+            var phone = document.getElementById("phoneInput").value;
+            var date = document.getElementById("dateInput").value;
+            var time = document.getElementById("timeInput").value;
+
+            // Pack the data into a script (JSON format)
+            var formData = {
+                name: name,
+                email: email,
+                phone: phone,
+                date: date,
+                time: time
+            };
+
+            // You can now use formData object to send data to your server or perform other actions
+            console.log(formData);
+            // Here you can perform further actions, like sending the data to a server via AJAX
+
+            // Optionally, you can reset the form after submission
+            this.reset();
+            // document.querySelector('.login-box').style.display = 'none';
+            // document.querySelector('.successMsg').style.display = 'block';
+        });
     </script>
     <footer>
         <div><i class="fa fa-whatsapp"></i> +91 63918 68813 </div>
