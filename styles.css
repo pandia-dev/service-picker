@@ -86,6 +86,57 @@ form button {
     }
 }
 
+/* ------------ Index ------------ */
+
+
+.home-card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.home-card {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 300px;
+    text-align: center;
+    flex: 1 0 auto;
+    margin: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: fadeIn 1s ease;
+    cursor: pointer;
+}
+
+.home-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.home-card h3 {
+    color: #b918cb;
+    margin-bottom: 10px;
+}
+
+.home-card p {
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.home-card .price {
+    color: #333;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.home-card .fa {
+    color: #24a50e;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+
 /* ------------ Booking ------------*/
 
 #booking-card-container {
@@ -137,6 +188,19 @@ form button {
     margin-bottom: 10px;
 }
 
+.count {
+    background: #E91E63;
+    color: white;
+    border-radius: 10px;
+    width: fit-content;
+    padding: 0 5px;
+    font-size: smaller;
+    float: right;
+    position: relative;
+    top: 40px;
+    left: 15px;
+}
+
 .first-row {
     display: flex;
     flex-direction: row;
@@ -148,6 +212,8 @@ form button {
 }
 
 .plus-button, .minus-button {
+    font-size: large;
+    text-align: center;
     background: #24a50e;
     color: white;
     border: none;
@@ -158,7 +224,7 @@ form button {
     box-shadow: 1px 1px 4px 0px black;
 }
 
-.service-price{
+.service-price {
     display: inline-block;
     padding: 5px 10px;
     margin-top: 10px;
@@ -173,7 +239,7 @@ form button {
 
 /* ------------ Appointment ------------ */
 
-.card .button {
+.appointment-card .button {
     display: inline-block;
     padding: 10px 20px;
     margin-top: 10px;
@@ -186,19 +252,22 @@ form button {
     transition: background-color 0.3s ease;
 }
 
-.card .button:hover {
+.appointment-card .button:hover {
     background-color: #e60073;
 }
 
 
-.card-container {
+.appointment-card-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
 }
 
-.card {
+.appointment-card {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
@@ -211,31 +280,64 @@ form button {
     cursor: pointer;
 }
 
-.card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-.card h3 {
+.appointment-card h3 {
     color: #b918cb;
     margin-bottom: 10px;
 }
 
-.card p {
+.appointment-card p {
     color: #555;
     margin-bottom: 20px;
 }
 
-.card .price {
+.appointment-card .price {
     color: #333;
     font-size: 1.2em;
     font-weight: bold;
 }
 
-.card .fa {
+.appointment-card .fa {
     color: #24a50e;
-    font-size: 2em;
+    font-size: 1.5em;
     margin-bottom: 10px;
+}
+
+.column-card-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+.column-card-header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 0.5em;
+}
+
+.service-card {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background: inherit;
+    color: inherit;
+    padding: 5px;    
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);    
+    background: linear-gradient(to bottom right, rgb(110 100 255), rgb(235, 19, 181));
+    color: white;
+    border-radius: 5px;    
+    cursor: pointer;
+    font-size: large;
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 /* ------------ Appointment Form ------------ */

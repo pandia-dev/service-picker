@@ -55,61 +55,308 @@
             "price": "50"
         }
     ],
-
-    "appoinmentService": [
-        {
-            "id": 1,
-            "service": "HD makeup",
-            "desc": "HD face makeup | Sweat proof | Hairstyle | 1 Saree pleating or drapping",
-            "price": "7,999"
+    "skinService": {
+        "skinBeauty": {
+            "label": "Skin & Beauty",
+            "icon": "fa fa-paint-brush",
+            "list": [
+                {
+                    "id": 1,
+                    "service": "Threading",
+                    "price": "50"
+                },
+                {
+                    "id": 2,
+                    "service": "Cleanup",
+                    "price": "299"
+                },
+                {
+                    "id": 3,
+                    "service": "Manicure",
+                    "price": "350"
+                },
+                {
+                    "id": 4,
+                    "service": "Pedicure",
+                    "price": "350"
+                }
+            ]
         },
-        {
-            "id": 2,
-            "service": "Standard makeup",
-            "desc": "Face makeup | Hairstyle | 1 Saree pleating or drapping",
-            "price": "6,500"
+        "bleach": {
+            "label": "Bleach",
+            "icon": "fa fa-magic",
+            "list": [
+                {
+                    "id": 5,
+                    "service": "Lacto bleach",
+                    "price": "199"
+                },
+                {
+                    "id": 6,
+                    "service": "Aroma bleach",
+                    "price": "250"
+                },
+                {
+                    "id": 7,
+                    "service": "Fruit bleach",
+                    "price": "250"
+                },
+                {
+                    "id": 8,
+                    "service": "Oxy bleach",
+                    "price": "299"
+                }
+            ]
         },
-        {
-            "id": 3,
-            "service": "Portrait Mehandi (Hand)",
-            "desc": "A style of mehandi or henna that involves creating a detailed portraits on bride's hand or arm using the mehandi paste.",
-            "price": "3,999"
+        "facial": {
+            "label": "Facial",
+            "icon": "fa fa-female",
+            "list": [
+                {
+                    "id": 9,
+                    "service": "Fruit facial",
+                    "price": "499"
+                },
+                {
+                    "id": 10,
+                    "service": "Wine facial",
+                    "price": "799"
+                },
+                {
+                    "id": 11,
+                    "service": "Aroma skin & glow",
+                    "price": "1,199"
+                },
+                {
+                    "id": 12,
+                    "service": "Skin whitening",
+                    "price": "1,199"
+                },
+                {
+                    "id": 13,
+                    "service": "Diamond facial",
+                    "price": "1,199"
+                }
+            ]
         },
-        {
-            "id": 4,
-            "service": "Pattern Mehandi (Hand)",
-            "desc": "An art of drawing the patterns, rangoli or traditional designs oh bride's hand",
-            "price": "1,999"
+        "waxing": {
+            "label": "Waxing",
+            "icon": "fa fa-leaf",
+            "list": [
+                {
+                    "id": 14,
+                    "service": "Hand",
+                    "price": "250"
+                },
+                {
+                    "id": 15,
+                    "service": "Underarms",
+                    "price": "199"
+                },
+                {
+                    "id": 16,
+                    "service": "Both legs (Half)",
+                    "price": "199"
+                },
+                {
+                    "id": 17,
+                    "service": "Both legs (Full)",
+                    "price": "399"
+                }
+            ]
         },
-        {
-            "id": 5,
-            "service": "Mehandi on legs",
-            "desc": "Intricate henna art covering the fingers and ankle area of your leg beautifully. This design also covers the lower side of your leg adding an aesthetic touch to your look",
-            "price": "999"
-        },
-        {
-            "id": 6,
-            "service": "Jewellary set",
-            "desc": "Antique silver & gold themed bridal jewellary sets available",
-            "price": "999"
-        },
-        {
-            "id": 7,
-            "service": "Advanced facial",
-            "desc": "Aroma | Diamond | Hydro facial",
-            "price": "1,200"
-        },
-        {
-            "id": 8,
-            "service": "Fruit facial",
-            "desc": "A skincare indulgence that taps into the richness of natural fruits for a cleansing, exfoliating, and nourishing experience",
-            "price": "399"
-        },
-        {
-            "id": 9,
-            "service": "Threading",
-            "desc": "To give an aesthetic look of eyebrows by removing excess of hair",
-            "price": "50"
+        "detan": {
+            "label": "Detan",
+            "icon": "fa fa-heart",
+            "list": [
+                {
+                    "id": 18,
+                    "service": "Underarams",
+                    "price": "150"
+                },
+                {
+                    "id": 19,
+                    "service": "Foot",
+                    "price": "150"
+                },
+                {
+                    "id": 20,
+                    "service": "Neck",
+                    "price": "250"
+                },
+                {
+                    "id": 21,
+                    "service": "Face",
+                    "price": "299"
+                },
+                {
+                    "id": 22,
+                    "service": "Hand",
+                    "price": "299"
+                },
+                {
+                    "id": 23,
+                    "service": "Leg",
+                    "price": "299"
+                }
+            ]
         }
-    ]
+    },
+    "hairService": {
+        "basicCut": {
+            "label": "Basic haircut",
+            "icon": "fa fa-scissors",
+            "list": [
+                {
+                    "id": 24,
+                    "service": "Kids cut",
+                    "price": "150"
+                },
+                {
+                    "id": 25,
+                    "service": "U cut",
+                    "price": "250"
+                },
+                {
+                    "id": 26,
+                    "service": "V cut",
+                    "price": "250"
+                },
+                {
+                    "id": 27,
+                    "service": "Straight cut",
+                    "price": "250"
+                }
+            ]
+        },
+        "advanceHairCut": {
+            "label": "Advance haircut",
+            "icon": "fa fa-scissors",
+            "list": [
+                {
+                    "id": 28,
+                    "service": "Butterfly cut",
+                    "price": "599"
+                },
+                {
+                    "id": 29,
+                    "service": "Feather cut",
+                    "price": "599"
+                },
+                {
+                    "id": 30,
+                    "service": "Square layer cut",
+                    "price": "599"
+                },
+                {
+                    "id": 31,
+                    "service": "Uniform layer cut",
+                    "price": "599"
+                },
+                {
+                    "id": 32,
+                    "service": "Pie layer cut",
+                    "price": "599"
+                }
+            ]
+        },
+        "hairCareServices": {
+            "label": "Hair care services",
+            "icon": "fa fa-magic",
+            "list": [
+                {
+                    "id": 33,
+                    "service": "Hair spa",
+                    "price": "999"
+                },
+                {
+                    "id": 34,
+                    "service": "Dandruff treatment",
+                    "price": "999"
+                },
+                {
+                    "id": 35,
+                    "service": "Lice treatment",
+                    "price": "999"
+                },
+                {
+                    "id": 36,
+                    "service": "Henna Treatment",
+                    "price": "799"
+                },
+                {
+                    "id": 37,
+                    "service": "Head massage",
+                    "price": "499"
+                },
+                {
+                    "id": 38,
+                    "service": "Basic hair colouring",
+                    "price": "499"
+                },
+                {
+                    "id": 39,
+                    "service": "Blow dry hair setting",
+                    "price": "250"
+                },
+                {
+                    "id": 40,
+                    "service": "Fashion Hair colouring",
+                    "price": "1,199"
+                },
+                {
+                    "id": 41,
+                    "service": "Hair temporary ironing",
+                    "price": "1,499"
+                },
+                {
+                    "id": 42,
+                    "service": "Hair straightening",
+                    "price": "4,999"
+                },
+                {
+                    "id": 43,
+                    "service": "Keratin treatment",
+                    "price": "5,999"
+                }
+            ]
+        }
+    },
+
+    "bodyDecor": {
+        "label": "Body-decor services",
+        "icon": "fa fa-female",
+        "list": [
+            {
+                "id": 44,
+                "service": "Tattoo",
+                "price": ""
+            },
+            {
+                "id": 45,
+                "service": "Earlobe treatment",
+                "price": ""
+            },
+            {
+                "id": 46,
+                "service": "Nose piercing",
+                "price": ""
+            },
+            {
+                "id": 47,
+                "service": "Ear piercing",
+                "price": ""
+            },
+            {
+                "id": 48,
+                "service": "Wart removal",
+                "price": ""
+            },
+            {
+                "id": 49,
+                "service": "Mehandi",
+                "price": ""
+            }
+        ]
+    }
 }

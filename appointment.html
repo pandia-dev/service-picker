@@ -15,8 +15,20 @@
         <h4>Shine like a star</h4>
     </header>
     <main>
-        <div class="card-container">
-            <div class="card">
+        <div class="appointment-card-container">
+            <div class="appointment-card">
+                <h3>Skin care services</h3>
+                <div id="skin" class="appointment-card-container"></div>
+            </div>
+            <div class="appointment-card">
+                <h3>Hair care services</h3>
+                <div id="hair" class="appointment-card-container"></div>
+            </div>
+            <div class="appointment-card">
+                <h3>Body decor services</h3>
+                <div id="body-decor" class="appointment-card-container"></div>
+            </div>
+            <!-- <div class="card">
                 <i class="fa fa-scissors"></i>
                 <h3>Haircuts & Styling</h3>
                 <p>Experience the best haircuts and styling services tailored to your unique look. Our expert stylists
@@ -71,7 +83,7 @@
                     rejuvenate your nails and cuticles, leaving them looking and feeling fabulous.</p>
                 <p class="price">₹120</p>
                 <a href="#" class="button">Schedule</a>
-            </div>
+            </div> -->
         </div>
         <div class="about-us">
             <h3 class="headings">About Us</h3>
@@ -87,9 +99,69 @@
         </div>
     </main>
     <script>
-        function navToForm(){
-            window.location.href = 'form.html';
-        }
+        fetch('menu.json')
+                .then(response => response.json())
+                .then(data => {
+                    const skinBeauty = data.skinService.skinBeauty;
+                    const bleach = data.skinService.bleach;
+                    const facial = data.skinService.facial;
+                    const waxing = data.skinService.waxing;
+                    const detan = data.skinService.detan;
+                    const basicCut = data.hairService.basicCut;
+                    const advanceHairCut = data.hairService.advanceHairCut;
+                    const hairCareServices = data.hairService.hairCareServices;
+                    const bodyDecor = data.bodyDecor;
+                    const skinArray = [skinBeauty, bleach, facial, waxing, detan];
+                    const hairArray = [basicCut, advanceHairCut, hairCareServices];
+                    const bodyDecorArray = [data.bodyDecor];
+                    generateMenu(skinArray, "skin");
+                    generateMenu(hairArray, "hair");
+                    generateMenu(bodyDecorArray, "body-decor");
+
+                    /**
+                    * * Generates a menu based on the provided array of categories.
+                    * 
+                    * This function takes an array of category names and a parent element ID.
+                    * It creates a menu item for each category and appends it to the parent element.
+                    *
+                    * @param {Array} arrayList - The array of category names.
+                    * @param {string} parentId - The ID of the parent element where the menu items will be appended.
+                    */
+                    function generateMenu(arrayList, id) {
+                        arrayList.forEach(oneCategory => {
+                            const parent = document.getElementById(id);
+                            const container = document.createElement("div");
+                            container.className = "appointment-card";
+                            const headingRow = document.createElement("div");
+                            headingRow.className = "column-card-header";
+                            const icon = document.createElement("i");
+                            icon.className = oneCategory.icon;
+                            const heading = document.createElement("h3");
+                            heading.innerHTML = oneCategory.label;
+                            parent.appendChild(container);
+                            container.appendChild(headingRow);
+                            headingRow.appendChild(icon);
+                            headingRow.appendChild(heading);
+
+                            oneCategory.list.forEach(el => {
+                                const serviceCard = document.createElement("div");
+                                serviceCard.className = "service-card";
+                                serviceCard.onclick = navToForm;
+                                const serviceName = document.createElement("span");
+                                serviceName.innerHTML = el.service;
+                                const price = document.createElement("span");
+                                price.innerHTML = el.price;
+                                container.appendChild(serviceCard);
+                                serviceCard.appendChild(serviceName);
+                                serviceCard.appendChild(price);
+                            });
+                        });
+                    }
+                });
+
+            function navToForm() {
+                window.location.href = 'form.html';
+            }
     </script>
     <footer>
         <div><i class="fa fa-whatsapp"></i> +91 63918 68813 </div>
