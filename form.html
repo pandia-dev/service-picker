@@ -16,7 +16,7 @@
     </header>
     <div class="login-box">
         <form action="">
-            <h3 class="headings">Schedule your slot</h3>
+            <h3 id="title" class="headings">Schedule your slot</h3>
             <div class="input-box">
                 <span class="icon"><i class="fa fa-user"></i></span>
                 <input type="text" required>
@@ -46,6 +46,10 @@
         </form>
     </div>
     <script>
+        const queryString = window.location.search;
+        const params = new URLSearchParams(queryString);
+        const serviceName = params.get('serviceName');
+        document.getElementById("title").innerHTML = "Schedule your slot for " + serviceName;
     </script>
     <footer>
         <div><i class="fa fa-whatsapp"></i> +91 63918 68813 </div>

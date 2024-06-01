@@ -28,62 +28,6 @@
                 <h3>Body decor services</h3>
                 <div id="body-decor" class="appointment-card-container"></div>
             </div>
-            <!-- <div class="card">
-                <i class="fa fa-scissors"></i>
-                <h3>Haircuts & Styling</h3>
-                <p>Experience the best haircuts and styling services tailored to your unique look. Our expert stylists
-                    ensure you leave feeling refreshed and confident.</p>
-                <p class="price">₹50</p>
-                <button class="button" onclick="navToForm()">Schedule</button>
-            </div>
-
-            <div class="card">
-                <i class="fa fa-paint-brush"></i>
-                <h3>Hair Coloring</h3>
-                <p>Transform your look with our professional hair coloring services. Our experts use high-quality
-                    products to achieve vibrant and long-lasting colors.</p>
-                <p class="price">₹70</p>
-                <a href="#" class="button">Schedule</a>
-            </div>
-
-            <div class="card">
-                <i class="fa fa-magic"></i>
-                <h3>Hair Treatments</h3>
-                <p>Indulge in our luxurious hair treatments designed to nourish and revitalize your hair. From deep
-                    conditioning to scalp massages, we offer a range of treatments to enhance the health and beauty of
-                    your hair.</p>
-                <p class="price">₹80</p>
-                <a href="#" class="button">Schedule</a>
-            </div>
-
-            <div class="card">
-                <i class="fa fa-female"></i>
-                <h3>Facials</h3>
-                <p>Revitalize your skin with our rejuvenating facial treatments. Our skilled estheticians will customize
-                    a facial regimen tailored to your skin type and concerns, leaving you with a radiant and youthful
-                    glow.</p>
-                <p class="price">₹90</p>
-                <a href="#" class="button">Schedule</a>
-            </div>
-
-            <div class="card">
-                <i class="fa fa-leaf"></i>
-                <h3>Skin Treatments</h3>
-                <p>Revitalize your skin with our range of skin treatments tailored to address various concerns such as
-                    acne, aging, and dullness. Our expert estheticians use advanced techniques and high-quality products
-                    to rejuvenate and nourish your skin.</p>
-                <p class="price">₹100</p>
-                <a href="#" class="button">Schedule</a>
-            </div>
-
-            <div class="card">
-                <i class="fa fa-heart"></i>
-                <h3>Manicures & Pedicures</h3>
-                <p>Pamper your hands and feet with our luxurious manicures and pedicures. Our skilled technicians will
-                    rejuvenate your nails and cuticles, leaving them looking and feeling fabulous.</p>
-                <p class="price">₹120</p>
-                <a href="#" class="button">Schedule</a>
-            </div> -->
         </div>
         <div class="about-us">
             <h3 class="headings">About Us</h3>
@@ -146,7 +90,9 @@
                             oneCategory.list.forEach(el => {
                                 const serviceCard = document.createElement("div");
                                 serviceCard.className = "service-card";
-                                serviceCard.onclick = navToForm;
+                                serviceCard.onclick = function() {
+                                    navToForm(el.service);
+                                };
                                 const serviceName = document.createElement("span");
                                 serviceName.innerHTML = el.service;
                                 const price = document.createElement("span");
@@ -159,8 +105,8 @@
                     }
                 });
 
-            function navToForm() {
-                window.location.href = 'form.html';
+            function navToForm(serviceName) {
+                window.location.href = 'form.html'+'?serviceName='+serviceName;
             }
     </script>
     <footer>
