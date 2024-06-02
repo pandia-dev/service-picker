@@ -7,6 +7,7 @@
     <title>Being Princess</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="styles.css">
+    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <style>
         .login-box {
             display: flex;
@@ -84,79 +85,84 @@
             -webkit-appearance: none;
             display: none;
         } */
+        button {
+            width: 100%;
+            height: 40px;
+            background-image: linear-gradient(to left, rgb(248, 126, 235), rgb(156, 120, 248));
+            border: none;
+            outline: none;
+            border-radius: 40px;
+            cursor: pointer;
+            font-size: 1em;
+            color: black;
+            font-weight: 400px;
+        }
     </style>
 </head>
 
-<body>
+<body onload="onLoading()">
     <header>
         <h1>Being Princess</h1>
         <h4>Shine like a star</h4>
     </header>
     <div class="login-box">
-        <form action="">
+        <div>
             <h3 id="title" class="headings">Schedule your slot</h3>
             <div class="input-box">
                 <span class="icon"><i class="fa fa-user"></i></span>
-                <input type="text" required>
+                <input id="name" type="text" required>
                 <label>Name</label>
             </div>
             <div class="input-box">
                 <span class="icon"><i class="fa fa-envelope" aria-hidden="true"></i></span>
-                <input type="email" required>
+                <input id="email" type="email" required>
                 <label>Email</label>
             </div>
             <div class="input-box">
                 <span class="icon"><i class="fa fa-phone" aria-hidden="true"></i></span>
-                <input type="text" required>
+                <input id="phone" type="text" required>
                 <label>Phone number</label>
             </div>
             <div class="input-box">
                 <span class="icon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
-                <input type="date" required>
+                <input id="date" type="date" required>
                 <label>Date</label>
             </div>
             <div class="input-box">
                 <span class="icon"><i class="fa fa-clock-o" aria-hidden="true"></i></span>
-                <input type="time" required>
+                <input id="time" type="time" required>
                 <label>Time</label>
             </div>
-            <button type="submit">Submit</button>
-        </form>
+            <button onClick="onSchedule(event)">Schedule</button>
+        </div>
     </div>
     <script>
-        const queryString = window.location.search;
-        const params = new URLSearchParams(queryString);
-        const serviceName = params.get('serviceName');
-        document.getElementById("title").innerHTML = "Schedule your slot for " + serviceName;
+        var serviceName = "";
+        function onLoading() {
+            const queryString = window.location.search;
+            const params = new URLSearchParams(queryString);
+            serviceName = params.get('serviceName');
+            document.getElementById("title").innerHTML = "Schedule your slot for " + serviceName;
+        }
 
-        document.getElementById("scheduleForm").addEventListener("submit", function (event) {
-            event.preventDefault(); // Prevents the default form submission
-
-            // Get form values
-            var name = document.getElementById("nameInput").value;
-            var email = document.getElementById("emailInput").value;
-            var phone = document.getElementById("phoneInput").value;
-            var date = document.getElementById("dateInput").value;
-            var time = document.getElementById("timeInput").value;
-
-            // Pack the data into a script (JSON format)
-            var formData = {
-                name: name,
-                email: email,
-                phone: phone,
-                date: date,
-                time: time
+        function onSchedule(event) {
+            const params = {
+                from_name: document.getElementById("name").value,
+                service_name: serviceName,
+                mob: document.getElementById("phone").value,
+                mail: document.getElementById("email").value,
+                date: document.getElementById("date").value,
+                time: document.getElementById("time").value,
+                reply_to: "being.princess.parlour@gmail.com",
             };
-
-            // You can now use formData object to send data to your server or perform other actions
-            console.log(formData);
-            // Here you can perform further actions, like sending the data to a server via AJAX
-
-            // Optionally, you can reset the form after submission
-            this.reset();
-            // document.querySelector('.login-box').style.display = 'none';
-            // document.querySelector('.successMsg').style.display = 'block';
-        });
+            emailjs.send("service_jkgyc35", "template_wheq4fv", params, "OftJRiBMBIXgD9dfo").then(function (response) {
+                console.log('SUCCESS!', response.status, response.text);
+                alert('Request for schedule your service is send, We will keep you informed!');
+            }, function (error) {
+                console.log('FAILED...', error);
+                alert('There is some issue please try after sometimes');
+            });
+        }
     </script>
     <footer>
         <div><i class="fa fa-whatsapp"></i> +91 63918 68813 </div>
