@@ -153,7 +153,9 @@
                 mail: document.getElementById("email").value,
                 date: document.getElementById("date").value,
                 time: document.getElementById("time").value,
-                reply_to: "being.princess.parlour@gmail.com",
+                // reply_to: "being.princess.parlour@gmail.com",
+                // reply_to: "brahmavinoth12@gmail.com",
+                reply_to: "empiyar007@gmail.com"
             };
             emailjs.send("service_jkgyc35", "template_wheq4fv", params, "OftJRiBMBIXgD9dfo").then(function (response) {
                 console.log('SUCCESS!', response.status, response.text);
