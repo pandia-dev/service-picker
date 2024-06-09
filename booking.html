@@ -60,6 +60,7 @@
         .count {
             background: #E91E63;
             color: white;
+            display: none;
             border-radius: 10px;
             width: fit-content;
             padding: 0 5px;
@@ -92,6 +93,10 @@
             margin: 5px;
             width: 20px;
             box-shadow: 1px 1px 4px 0px black;
+        }
+
+        .minus-button {
+            display: none;
         }
 
         .service-price {
@@ -136,10 +141,19 @@
         <div><i class="fa fa-envelope"></i> being.princess.parlour@gmail.com</div>
     </footer>
     <script>
+
+        function addition() {
+            if (currentQuateObj.count > 0) {
+                quatationArray.push(currentQuateObj);
+            }
+        }
+        
         fetch('menu.json')
             .then(response => response.json())
             .then(data => {
-                debugger
+                const quatationArray = [];
+                // debugger
+                // minusButton.style.display = "none";
                 data.eventBooking.forEach((element) => {
                     // Getting parent element
                     const menuList = document.getElementById("card-container");
@@ -168,7 +182,7 @@
                     minusButton.className = "minus-button";
                     minusButton.innerHTML = "-";
                     count.className = "count"
-                    count.innerText = "3"
+                    count.innerText = "0"
                     secondRow.className = "second-row";
                     desc.className = "service-desc";
                     desc.innerText = element.desc;
@@ -188,6 +202,41 @@
                     secondRow.appendChild(desc);
                     thirdRow.appendChild(price);
                     thirdRow.appendChild(count);
+
+                    const currentQuateObj = {
+                        "id": 1,
+                        "service": "HD makeup",
+                        "price": "7,999",
+                        "count": 0,
+                        "total": 0
+                    };
+
+                    // Add event listener to plusButton
+                    plusButton.addEventListener('click', () => {
+                        let currentCount = parseInt(count.innerText);
+                        count.innerText = (currentCount + 1).toString();
+                        if (currentCount !== 1) {
+                            minusButton.style.display = "inline-block";
+                            count.style.display = "inline-block";
+                        }
+                    });
+
+                    // Add event listener to minusButton (if needed)
+                    minusButton.addEventListener('click', () => {
+                        let currentCount = parseInt(count.innerText);
+                        if (currentCount > 0) {
+                            count.innerText = (currentCount - 1).toString();
+                        }
+                        // Hide the minus button when count becomes zero
+                        if (currentCount === 1) {
+                            minusButton.style.display = "none";
+                            count.style.display = "none";
+                        }
+
+                        // Initially hide the minus button if count is zero
+
+                    });
+
                 });
             })
             .catch(error => console.error('Error fetching JSON:', error));
