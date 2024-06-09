@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Being Princess</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <style>
+        .login-box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 20px;
+            margin-bottom: 10px;
+        }
+
+        .input-box {
+            position: relative;
+            border-bottom: 2px solid black;
+            margin: 30px 0;
+        }
+
+        .input-box label {
+            position: absolute;
+            top: 20%;
+            left: 5px;
+            transform: translateY(-50%);
+            font-size: 1em;
+            color: black;
+            pointer-events: none;
+            transition: .5s;
+        }
+
+        .input-box input:focus~label,
+        .input-box input:valid~label {
+            top: -5px;
+        }
+
+        .input-box input {
+            width: 100%;
+            height: 50px;
+            background: transparent;
+            border: none;
+            outline: none;
+            font-size: 1em;
+            color: black;
+            padding: 0 35px 0 5px;
+        }
+
+        .input-box .icon {
+            position: absolute;
+            right: 8px;
+            color: black;
+            font-size: 1.2em;
+            line-height: 57px;
+        }
+
+        input[type="time"]::-webkit-calendar-picker-indicator {
+            display: none;
+        }
+
+        input[type="date"]::-webkit-calendar-picker-indicator {
+            display: none;
+        }
+
+        /* input[type=date]::-webkit-datetime-edit-text {
+            -webkit-appearance: none;
+            display: none;
+        }
+        
+        input[type=date]::-webkit-datetime-edit-month-field {
+            -webkit-appearance: none;
+            display: none;
+        }
+        
+        input[type=date]::-webkit-datetime-edit-day-field {
+            -webkit-appearance: none;
+            display: none;
+        }
+        
+        input[type=date]::-webkit-datetime-edit-year-field {
+            -webkit-appearance: none;
+            display: none;
+        } */
+        button {
+            width: 100%;
+            height: 40px;
+            background-image: linear-gradient(to left, rgb(248, 126, 235), rgb(156, 120, 248));
+            border: none;
+            outline: none;
+            border-radius: 40px;
+            cursor: pointer;
+            font-size: 1em;
+            color: black;
+            font-weight: 400px;
+        }
+    </style>
+</head>
+
+<body onload="onLoading()">
+    <header>
+        <h1>Being Princess</h1>
+        <h4>Shine like a star</h4>
+    </header>
+    <div class="login-box">
+        <div>
+            <h3 id="title" class="headings">Schedule your slot</h3>
+            <div class="input-box">
+                <span class="icon"><i class="fa fa-user"></i></span>
+                <input id="name" type="text" required>
+                <label>Name</label>
+            </div>
+            <div class="input-box">
+                <span class="icon"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+                <input id="email" type="email" required>
+                <label>Email</label>
+            </div>
+            <div class="input-box">
+                <span class="icon"><i class="fa fa-phone" aria-hidden="true"></i></span>
+                <input id="phone" type="text" required>
+                <label>Phone number</label>
+            </div>
+            <div class="input-box">
+                <span class="icon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                <input id="date" type="date" required>
+                <label>Date</label>
+            </div>
+            <div class="input-box">
+                <span class="icon"><i class="fa fa-clock-o" aria-hidden="true"></i></span>
+                <input id="time" type="time" required>
+                <label>Time</label>
+            </div>
+            <button onClick="onSchedule(event)">Schedule</button>
+        </div>
+    </div>
+    <script>
+        var serviceName = "";
+        function onLoading() {
+            const queryString = window.location.search;
+            const params = new URLSearchParams(queryString);
+            serviceName = params.get('serviceName');
+            document.getElementById("title").innerHTML = "Schedule your slot for " + serviceName;
+        }
+
+        function onSchedule(event) {
+            const params = {
+                name: document.getElementById("name").value,
+                serviceName: serviceName,
+                mob: document.getElementById("phone").value,
+                mail: document.getElementById("email").value,
+                date: document.getElementById("date").value,
+                time: document.getElementById("time").value
+            };
+
+            if (!params.name || params.name.length < 1) alert('Please enter valid name')
+            else if (!params.mob || isNaN(params.mob) || params.mob.length !== 10) alert('Please enter valid mobile number')
+            else if (!params.date || params.date.length !== 10) alert('Please enter valid date')
+            else if (!params.time || params.time.length !== 5) alert('Please enter valid time')
+            else {
+                fetch('/schedule-appointment', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(params)
+                })
+                    .then(response => response.text())
+                    .then(result => alert(result))
+                    .catch(error => console.error('Error:', error));
+            }
+
+
+        }
+
+
+
+    </script>
+    <footer>
+        <div><i class="fa fa-whatsapp"></i> +91 63918 68813 </div>
+        <div><i class="fa fa-phone"></i> +91 86084 47437</div>
+        <div><i class="fa fa-instagram"></i> being_princess_official</div>
+        <div><i class="fa fa-envelope"></i> being.princess.parlour@gmail.com</div>
+    </footer>
+</body>
+
+</html>
