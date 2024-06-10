@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Being Princess</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
     <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <style>
         .login-box {
@@ -147,24 +147,36 @@
 
         function onSchedule(event) {
             const params = {
-                from_name: document.getElementById("name").value,
-                service_name: serviceName,
+                name: document.getElementById("name").value,
+                serviceName: serviceName,
                 mob: document.getElementById("phone").value,
                 mail: document.getElementById("email").value,
                 date: document.getElementById("date").value,
-                time: document.getElementById("time").value,
-                // reply_to: "being.princess.parlour@gmail.com",
-                // reply_to: "brahmavinoth12@gmail.com",
-                reply_to: "empiyar007@gmail.com"
+                time: document.getElementById("time").value
             };
-            emailjs.send("service_jkgyc35", "template_wheq4fv", params, "OftJRiBMBIXgD9dfo").then(function (response) {
-                console.log('SUCCESS!', response.status, response.text);
-                alert('Request for schedule your service is send, We will keep you informed!');
-            }, function (error) {
-                console.log('FAILED...', error);
-                alert('There is some issue please try after sometimes');
-            });
+
+            if (!params.name || params.name.length < 1) alert('Please enter valid name')
+            else if (!params.mob || isNaN(params.mob) || params.mob.length !== 10) alert('Please enter valid mobile number')
+            else if (!params.date || params.date.length !== 10) alert('Please enter valid date')
+            else if (!params.time || params.time.length !== 5) alert('Please enter valid time')
+            else {
+                fetch('/schedule-appointment', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(params)
+                })
+                    .then(response => response.text())
+                    .then(result => alert(result))
+                    .catch(error => console.error('Error:', error));
+            }
+
+
         }
+
+
+
     </script>
     <footer>
         <div><i class="fa fa-whatsapp"></i> +91 63918 68813 </div>

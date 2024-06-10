@@ -1,7 +1,6 @@
 // fetch('menu.json')
 //     .then(response => response.json())
 //     .then(data => {
-//         debugger
 //         data.menuList.forEach((element) => {
 //             // Getting parent element
 //             const menuList = document.getElementById("menu-list");
