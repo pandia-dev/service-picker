@@ -111,6 +111,27 @@
             font-size: 1em;
             transition: background-color 0.3s ease;
         }
+
+        #quatationBtn {
+            display: block;
+            margin: 30px auto;
+            /* Centering the button */
+            padding: 10px 20px;
+            font-size: 1.2em;
+            color: white;
+            background-color: #24a50e;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        #quatationBtn:hover {
+            background-color: #1c7c0b;
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
     </style>
 </head>
 
@@ -121,6 +142,7 @@
     </header>
     <main>
         <div id="card-container"></div>
+        <button id="quatationBtn" onclick="quatationClick()">Get Quatation</button>
         <div class="about-us">
             <h3 class="headings">About Us</h3>
             <p> At Being Princess, our mission is to make you feel beautiful and confident. We are committed to
@@ -134,6 +156,7 @@
             <img class="google-review" src="images/google-reviews.png" alt="Description of the image">
         </div>
     </main>
+
     <footer>
         <div><i class="fa fa-whatsapp"></i> +91 63918 68813 </div>
         <div><i class="fa fa-phone"></i> +91 86084 47437</div>
@@ -141,19 +164,16 @@
         <div><i class="fa fa-envelope"></i> being.princess.parlour@gmail.com</div>
     </footer>
     <script>
-
+        let quatationArray = [];
         function addition() {
             if (currentQuateObj.count > 0) {
                 quatationArray.push(currentQuateObj);
             }
         }
-        
+
         fetch('menu.json')
             .then(response => response.json())
             .then(data => {
-                const quatationArray = [];
-                // debugger
-                // minusButton.style.display = "none";
                 data.eventBooking.forEach((element) => {
                     // Getting parent element
                     const menuList = document.getElementById("card-container");
@@ -178,9 +198,9 @@
                     name.innerText = element.service;
                     plusMinus.className = "plus-minus";
                     plusButton.className = "plus-button";
-                    plusButton.innerHTML = "+";
-                    minusButton.className = "minus-button";
                     minusButton.innerHTML = "-";
+                    minusButton.className = "minus-button";
+                    plusButton.innerHTML = "+";
                     count.className = "count"
                     count.innerText = "0"
                     secondRow.className = "second-row";
@@ -203,26 +223,55 @@
                     thirdRow.appendChild(price);
                     thirdRow.appendChild(count);
 
-                    const currentQuateObj = {
-                        "id": 1,
-                        "service": "HD makeup",
-                        "price": "7,999",
-                        "count": 0,
-                        "total": 0
-                    };
-
                     // Add event listener to plusButton
                     plusButton.addEventListener('click', () => {
+                        const currentQuateObj = {
+                            "id": element.id,
+                            "service": element.service,
+                            "price": element.price,
+                            "count": 1,
+                            "total": 0
+                        };
                         let currentCount = parseInt(count.innerText);
                         count.innerText = (currentCount + 1).toString();
                         if (currentCount !== 1) {
                             minusButton.style.display = "inline-block";
                             count.style.display = "inline-block";
                         }
+                        if (quatationArray.length == 0) {
+                            quatationArray.push(currentQuateObj);
+                        } else {
+                            updateCart(quatationArray, currentQuateObj);
+                            console.log(quatationArray, 'plus');
+                        }
                     });
 
-                    // Add event listener to minusButton (if needed)
+                    function updateCart(items, newItem) {
+                        const existingItemIndex = items.findIndex((item) => item.id === newItem.id);
+
+                        if (existingItemIndex !== -1) {
+                            // If ID exists, update count in a copy of the object
+                            const updatedItem = { ...items[existingItemIndex], count: items[existingItemIndex].count + 1 };
+                            quatationArray = [
+                                ...items.slice(0, existingItemIndex),
+                                updatedItem,
+                                ...items.slice(existingItemIndex + 1),
+                            ];
+                        } else {
+                            // If ID doesn't exist, push the new item
+                            quatationArray = [...items, newItem];
+                        }
+                    }
+
+                    // Add event listener to minusButton
                     minusButton.addEventListener('click', () => {
+                        const currentQuateObj = {
+                            "id": element.id,
+                            "service": element.service,
+                            "price": element.price,
+                            "count": 1,
+                            "total": 0
+                        };
                         let currentCount = parseInt(count.innerText);
                         if (currentCount > 0) {
                             count.innerText = (currentCount - 1).toString();
@@ -232,14 +281,40 @@
                             minusButton.style.display = "none";
                             count.style.display = "none";
                         }
-
-                        // Initially hide the minus button if count is zero
-
+                        updateCartDe(quatationArray, currentQuateObj);
+                        console.log(quatationArray, 'minus');
                     });
 
+                    function updateCartDe(items, newItem) {
+                        const existingItemIndex = items.findIndex((item) => item.id === newItem.id);
+
+                        if (existingItemIndex !== -1) {
+                            // If ID exists, handle decrease or removal
+                            if (items[existingItemIndex].count > 0) {
+                                // Decrement count in a copy of the object (avoid mutation)
+                                const updatedItem = { ...items[existingItemIndex], count: items[existingItemIndex].count - 1 };
+                                quatationArray = [
+                                    ...items.slice(0, existingItemIndex),
+                                    updatedItem,
+                                    ...items.slice(existingItemIndex + 1),
+                                ];
+                            } else {
+                                // If count reaches 0, remove the item (optional)
+                                quatationArray = items.filter((item) => item.id !== newItem.id);
+                            }
+                        } else {
+                            // If ID doesn't exist, push the new item
+                            quatationArray = [...items, newItem];
+                        }
+                    }
                 });
             })
             .catch(error => console.error('Error fetching JSON:', error));
+
+        function quatationClick() {
+            const dataString = encodeURIComponent(JSON.stringify(quatationArray));
+            window.location.href = `quatation.html?data=${dataString}`;
+        }
     </script>
 </body>
 
