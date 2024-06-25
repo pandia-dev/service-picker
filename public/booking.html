@@ -112,7 +112,7 @@
             transition: background-color 0.3s ease;
         }
 
-        #quatationBtn {
+        #quotationBtn {
             display: block;
             margin: 30px auto;
             /* Centering the button */
@@ -127,11 +127,17 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
-        #quatationBtn:hover {
+        #quotationBtn:hover {
             background-color: #1c7c0b;
             transform: scale(1.05);
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
         }
+
+#quotationBtn:disabled {
+    background-color: #b9b9b9ed;
+    color: black;
+    cursor: not-allowed;
+}
     </style>
 </head>
 
@@ -142,7 +148,7 @@
     </header>
     <main>
         <div id="card-container"></div>
-        <button id="quatationBtn" onclick="quatationClick()">Get Quatation</button>
+        <button id="quotationBtn" onclick="quotationClick()">Get Quatation</button>
         <div class="about-us">
             <h3 class="headings">About Us</h3>
             <p> At Being Princess, our mission is to make you feel beautiful and confident. We are committed to
@@ -164,12 +170,7 @@
         <div><i class="fa fa-envelope"></i> being.princess.parlour@gmail.com</div>
     </footer>
     <script>
-        let quatationArray = [];
-        function addition() {
-            if (currentQuateObj.count > 0) {
-                quatationArray.push(currentQuateObj);
-            }
-        }
+        let quotationArray = [];
 
         fetch('menu.json')
             .then(response => response.json())
@@ -217,8 +218,8 @@
                     menuCard.appendChild(thirdRow);
                     firstRow.appendChild(name);
                     firstRow.appendChild(plusMinus);
-                    plusMinus.appendChild(plusButton);
                     plusMinus.appendChild(minusButton);
+                    plusMinus.appendChild(plusButton);
                     secondRow.appendChild(desc);
                     thirdRow.appendChild(price);
                     thirdRow.appendChild(count);
@@ -238,30 +239,14 @@
                             minusButton.style.display = "inline-block";
                             count.style.display = "inline-block";
                         }
-                        if (quatationArray.length == 0) {
-                            quatationArray.push(currentQuateObj);
+                        if (quotationArray.length == 0) {
+                            quotationArray.push(currentQuateObj);
                         } else {
-                            updateCart(quatationArray, currentQuateObj);
-                            console.log(quatationArray, 'plus');
+                            addItem(quotationArray, currentQuateObj);
+                            console.log(quotationArray, 'plus');
                         }
+                        isQuatationBtnDisable();
                     });
-
-                    function updateCart(items, newItem) {
-                        const existingItemIndex = items.findIndex((item) => item.id === newItem.id);
-
-                        if (existingItemIndex !== -1) {
-                            // If ID exists, update count in a copy of the object
-                            const updatedItem = { ...items[existingItemIndex], count: items[existingItemIndex].count + 1 };
-                            quatationArray = [
-                                ...items.slice(0, existingItemIndex),
-                                updatedItem,
-                                ...items.slice(existingItemIndex + 1),
-                            ];
-                        } else {
-                            // If ID doesn't exist, push the new item
-                            quatationArray = [...items, newItem];
-                        }
-                    }
 
                     // Add event listener to minusButton
                     minusButton.addEventListener('click', () => {
@@ -281,40 +266,64 @@
                             minusButton.style.display = "none";
                             count.style.display = "none";
                         }
-                        updateCartDe(quatationArray, currentQuateObj);
-                        console.log(quatationArray, 'minus');
+                        removeItem(quotationArray, currentQuateObj);
+                        console.log(quotationArray, 'minus');
+                        isQuatationBtnDisable();
                     });
 
-                    function updateCartDe(items, newItem) {
+                    function addItem(items, newItem) {
+                        const existingItemIndex = items.findIndex((item) => item.id === newItem.id);
+
+                        if (existingItemIndex !== -1) {
+                            // If ID exists, update count in a copy of the object
+                            const updatedItem = { ...items[existingItemIndex], count: items[existingItemIndex].count + 1 };
+                            quotationArray = [
+                                ...items.slice(0, existingItemIndex),
+                                updatedItem,
+                                ...items.slice(existingItemIndex + 1),
+                            ];
+                        } else {
+                            // If ID doesn't exist, push the new item
+                            quotationArray = [...items, newItem];
+                        }
+                    }
+
+                    function removeItem(items, newItem) {
                         const existingItemIndex = items.findIndex((item) => item.id === newItem.id);
 
                         if (existingItemIndex !== -1) {
                             // If ID exists, handle decrease or removal
-                            if (items[existingItemIndex].count > 0) {
+                            if (items[existingItemIndex].count > 1) {
                                 // Decrement count in a copy of the object (avoid mutation)
                                 const updatedItem = { ...items[existingItemIndex], count: items[existingItemIndex].count - 1 };
-                                quatationArray = [
+                                quotationArray = [
                                     ...items.slice(0, existingItemIndex),
                                     updatedItem,
                                     ...items.slice(existingItemIndex + 1),
                                 ];
                             } else {
                                 // If count reaches 0, remove the item (optional)
-                                quatationArray = items.filter((item) => item.id !== newItem.id);
+                                quotationArray = items.filter((item) => item.id !== newItem.id);
                             }
                         } else {
                             // If ID doesn't exist, push the new item
-                            quatationArray = [...items, newItem];
+                            quotationArray = [...items, newItem];
                         }
                     }
                 });
             })
             .catch(error => console.error('Error fetching JSON:', error));
 
-        function quatationClick() {
-            const dataString = encodeURIComponent(JSON.stringify(quatationArray));
-            window.location.href = `quatation.html?data=${dataString}`;
+        function quotationClick() {
+            const dataString = encodeURIComponent(JSON.stringify(quotationArray));
+            window.location.href = `quotation.html?data=${dataString}`;
         }
+
+        function isQuatationBtnDisable() {
+            const quotationBtn = document.getElementById('quotationBtn');
+            quotationBtn.disabled = quotationArray.length < 1;
+        }
+        isQuatationBtnDisable();
     </script>
 </body>
 

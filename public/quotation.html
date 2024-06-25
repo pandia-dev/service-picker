@@ -42,14 +42,22 @@
         th,
         td {
             padding: 8px;
-            text-align: left;
             background-color: #fff;
             transition: background-color 0.3s ease, transform 0.3s ease;
         }
 
         th {
-            background-color: #eb6aef;
-            color: #fff;
+            background-color: #eb84e5;
+            color: #000000;
+            text-align: center;
+        }
+
+        .number-col {
+            text-align: right !important;
+        }
+
+        .text-col {
+            text-align: left !important;
         }
 
         tr:nth-child(even) {
@@ -106,31 +114,31 @@
                 </tbody>
                 <tfoot>
                     <tr>
-                        <th colspan="4">Grand Total</th>
-                        <th id="grandTotal"></th>
+                        <th class="text-col" colspan="4">Grand Total</th>
+                        <th id="grand-total" class="number-col"></th>
                     </tr>
                 </tfoot>
             </table>
         </div>
     </div>
     <script>
-        let quatationArray = [];
+        let quotationArray = [];
         window.onload = function () {
             const urlParam = new URLSearchParams(window.location.search);
-            const quatationData = urlParam.get('data');
-            if (quatationData) {
-                this.quatationArray = JSON.parse(decodeURIComponent(quatationData));
+            const quotationData = urlParam.get('data');
+            if (quotationData) {
+                this.quotationArray = JSON.parse(decodeURIComponent(quotationData));
             }
         }
 
         // Function to display services in the table
         function displayServices() {
             const tableBody = document.querySelector('#servicesTable tbody');
-            const grandTotalElement = document.getElementById('grandTotal');
+            const grandTotalElement = document.getElementById('grand-total');
             let slNo = 0;
             let grandTotal = 0;
 
-            this.quatationArray.forEach((service, index) => {
+            this.quotationArray.forEach((service, index) => {
                 if (service.count != 0) {
                     slNo++;
                     const row = document.createElement('tr');
@@ -140,11 +148,11 @@
                     grandTotal += total;
 
                     row.innerHTML = `
-                        <td>${slNo}</td>
-                        <td>${service.service}</td>
-                        <td>${service.price}</td>
-                        <td>${service.count}</td>
-                        <td>${total.toLocaleString('en-IN')}</td>
+                        <td class="number-col">${slNo}</td>
+                        <td class="text-col">${service.service}</td>
+                        <td class="number-col">${service.price}</td>
+                        <td class="number-col">${service.count}</td>
+                        <td class="number-col">${total.toLocaleString('en-IN')}</td>
                     `;
                     tableBody.appendChild(row);
                 }
