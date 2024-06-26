@@ -8,12 +8,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="style.css">
     <style>
-        .login-box {
+        .content-container {
             display: flex;
             justify-content: center;
             align-items: center;
             border-radius: 20px;
             margin-bottom: 10px;
+            flex-direction: row;
+            flex-wrap: wrap;
         }
 
         .heading {
@@ -89,6 +91,13 @@
         .highlight {
             animation: highlight 1s ease-in-out;
         }
+
+        #form-section {
+            position: relative;
+            top: 1em;
+            padding: 1em;
+            animation: fadeIn 1s ease-in-out;
+        }
     </style>
 </head>
 
@@ -96,10 +105,10 @@
     <header>
         <h1>Being Princess</h1>
         <h4>Shine like a star</h4>
-    </header>
-    <div class="login-box">
-        <div>
-            <h1 class="heading">Service Quotation</h1>
+    </header>    
+    <h1 class="heading">Service Quotation</h1>
+    <div class="content-container">
+        <div id="quotation-section">
             <table id="servicesTable">
                 <thead>
                     <tr>
@@ -120,16 +129,30 @@
                 </tfoot>
             </table>
         </div>
+        <div id="form-section">
+
+        </div>
     </div>
     <script>
         let quotationArray = [];
+        // Prepare the JSON from query params
         window.onload = function () {
             const urlParam = new URLSearchParams(window.location.search);
             const quotationData = urlParam.get('data');
             if (quotationData) {
                 this.quotationArray = JSON.parse(decodeURIComponent(quotationData));
+                displayServices();
             }
         }
+
+        // Loading form component from shared module
+        document.addEventListener('DOMContentLoaded', function () {
+            fetch('shared/form.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('form-section').innerHTML = data;
+                });
+        });
 
         // Function to display services in the table
         function displayServices() {
@@ -161,10 +184,9 @@
             grandTotalElement.textContent = grandTotal.toLocaleString('en-IN');
         }
 
-        // Call the function to display the services
-        setTimeout(() => {
-            displayServices();
-        }, 50);
+        function onSubmit() {
+            debugger
+        }
     </script>
     <footer>
         <div><i class="fa fa-whatsapp"></i> +91 63918 68813 </div>

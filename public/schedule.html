@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Being Princess</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <style>
+        #form-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 20px;
+            margin-bottom: 10px;
+            animation: fadeIn 1s ease-in-out;
+        }
+    </style>
+</head>
+
+<body onload="onLoading()">
+    <header>
+        <h1>Being Princess</h1>
+        <h4>Shine like a star</h4>
+    </header>
+    <h3 id="title" class="headings">Schedule your slot</h3>
+    <div id="form-section">
+    </div>
+    <script>
+        var serviceName = "";
+        function onLoading() {
+            const queryString = window.location.search;
+            const params = new URLSearchParams(queryString);
+            serviceName = params.get('serviceName');
+            document.getElementById("title").innerHTML = "Schedule your slot for " + serviceName;
+        }
+
+        // Loading form component from shared module
+        document.addEventListener('DOMContentLoaded', function () {
+            fetch('shared/form.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('form-section').innerHTML = data;
+                });
+        });
+
+        function onSubmit(event) {
+            const params = {
+                name: document.getElementById("name").value,
+                serviceName: serviceName,
+                mob: document.getElementById("phone").value,
+                mail: document.getElementById("email").value,
+                date: document.getElementById("date").value,
+                time: document.getElementById("time").value
+            };
+
+            if (!params.name || params.name.length < 1) alert('Please enter valid name')
+            else if (!params.mob || isNaN(params.mob) || params.mob.length !== 10) alert('Please enter valid mobile number')
+            else if (!params.date || params.date.length !== 10) alert('Please enter valid date')
+            else if (!params.time || params.time.length !== 5) alert('Please enter valid time')
+            else {
+                fetch('/schedule-appointment', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(params)
+                })
+                    .then(response => response.text())
+                    .then(result => alert(result))
+                    .catch(error => console.error('Error:', error));
+            }
+
+
+        }
+
+
+
+    </script>
+    <footer>
+        <div><i class="fa fa-whatsapp"></i> +91 63918 68813 </div>
+        <div><i class="fa fa-phone"></i> +91 86084 47437</div>
+        <div><i class="fa fa-instagram"></i> being_princess_official</div>
+        <div><i class="fa fa-envelope"></i> being.princess.parlour@gmail.com</div>
+    </footer>
+</body>
+
+</html>
