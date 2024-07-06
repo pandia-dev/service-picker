@@ -1,0 +1,114 @@
+<style>
+    .thumbnail-img {
+        height: 16em;
+        width: auto;
+        border-radius: 8px;
+    }
+
+    .pswp__img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+        /* Ensure the image fits within the container without stretching */
+    }
+
+    .pswp-gallery {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 1em;
+    }
+</style>
+<!-- Gallery -->
+<div id="app">
+    <div class="pswp-gallery" id="my-gallery">
+        <a href="images/gallery (1).jpg" data-size="1200x900">
+            <img class="thumbnail-img" src="images/gallery (1).jpg" alt="">
+        </a>
+        <a href="images/gallery (2).jpg" data-size="1200x900">
+            <img class="thumbnail-img" src="images/gallery (2).jpg" alt="">
+        </a>
+        <a href="images/gallery (3).jpg" data-size="1200x900">
+            <img class="thumbnail-img" src="images/gallery (3).jpg" alt="">
+        </a>
+        <a href="images/gallery (4).jpg" data-size="1200x900">
+            <img class="thumbnail-img" src="images/gallery (4).jpg" alt="">
+        </a>
+        <a href="images/gallery (5).jpg" data-size="1200x900">
+            <img class="thumbnail-img" src="images/gallery (5).jpg" alt="">
+        </a>
+        <a href="images/gallery (6).jpg" data-size="1200x900">
+            <img class="thumbnail-img" src="images/gallery (6).jpg" alt="">
+        </a>
+        <a href="images/gallery (7).jpg" data-size="1200x900">
+            <img class="thumbnail-img" src="images/gallery (7).jpg" alt="">
+        </a>
+        <a href="images/gallery (8).jpg" data-size="1200x900">
+            <img class="thumbnail-img" src="images/gallery (8).jpg" alt="">
+        </a>
+        <a href="images/gallery (9).jpg" data-size="1200x900">
+            <img class="thumbnail-img" src="images/gallery (9).jpg" alt="">
+        </a>
+        <a href="images/gallery (10).jpg" data-size="1200x900">
+            <img class="thumbnail-img" src="images/gallery (10).jpg" alt="">
+        </a>
+        <a href="images/gallery (11).jpg" data-size="1200x900">
+            <img class="thumbnail-img" src="images/gallery (11).jpg" alt="">
+        </a>
+        <a href="images/gallery (12).jpg" data-size="1200x900">
+            <img class="thumbnail-img" src="images/gallery (12).jpg" alt="">
+        </a>
+        <a href="images/gallery (13).jpg" data-size="1200x900">
+            <img class="thumbnail-img" src="images/gallery (13).jpg" alt="">
+        </a>
+        <a href="images/gallery (14).jpg" data-size="1200x900">
+            <img class="thumbnail-img" src="images/gallery (14).jpg" alt="">
+        </a>
+        <a href="images/gallery (15).jpg" data-size="1200x900">
+            <img class="thumbnail-img" src="images/gallery (15).jpg" alt="">
+        </a>
+        <a href="images/gallery (16).jpg" data-size="1200x900">
+            <img class="thumbnail-img" src="images/gallery (16).jpg" alt="">
+        </a>
+    </div>
+</div>
+
+<!-- PhotoSwipe Core & UI -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="pswp__bg"></div>
+    <div class="pswp__scroll-wrap">
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>

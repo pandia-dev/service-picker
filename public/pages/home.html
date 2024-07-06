@@ -1,0 +1,81 @@
+<style>
+    .card-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .card {
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        max-width: 300px;
+        text-align: center;
+        flex: 1 0 auto;
+        margin: 10px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        animation: fadeIn 1s ease;
+        cursor: pointer;
+    }
+
+    .card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .card h3 {
+        color: #b918cb;
+        margin-bottom: 10px;
+    }
+
+    .card p {
+        color: #555;
+        margin-bottom: 20px;
+    }
+
+    .card .price {
+        color: #333;
+        font-size: 1.2em;
+        font-weight: bold;
+    }
+
+    .card .fa {
+        color: #24a50e;
+        font-size: 1.5em;
+        margin-bottom: 10px;
+    }
+</style>
+
+<div class="card-container">
+    <div class="card" onclick="onAppointment()">
+        <i class="fa fa-clock-o"></i>
+        <h3>Get Appointment</h3>
+        <p>Feel yourself as comfort by taking the Skin, hair & body-decor services with us</p>
+    </div>
+
+    <div class="card" onclick="onBookEvent()">
+        <i class="fa fa-calendar"></i>
+        <h3>Book Event</h3>
+        <p>Transform yourself to the most beautiful version of you on your most precious day. Book our calendar
+            for your bridal or puberty event</p>
+    </div>
+
+    <div class="card" onclick="onGallery()">
+        <i class="fa fa-photo"></i>
+        <h3>Gallery</h3>
+        <p>Here you can check our works & witness our happy customers</p>
+    </div>
+</div>
+<div class="about-us">
+    <h3 class="headings">About Us</h3>
+    <p> At Being Princess, our mission is to make you feel beautiful and confident. We are committed to
+        delivering exceptional service, using only the highest quality products and the latest techniques in the
+        beauty industry. Our serene and welcoming environment ensures that every visit is a blissful retreat
+        from
+        the hustle and bustle of everyday life. We are dedicated to ensuring that you receive personalized care
+        and attention. We offer a wide range of services, including hair styling, skincare treatments,
+        manicures, pedicures, and more. Each service is designed to enhance your natural beauty and leave you
+        feeling refreshed and confident.</p>
+    <img class="google-review" src="images/google-reviews.png" alt="Description of the image">
+</div>
