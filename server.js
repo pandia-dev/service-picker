@@ -1,18 +1,19 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const sgMail = require('@sendgrid/mail');
+const path = require('path');
 require('dotenv').config();
 
 const app = express();
 app.use(bodyParser.json());
 app.use(express.static('public'));
 
+// Sending mails
 sgMail.setApiKey(process.env.API_KEY);
-
 app.post('/schedule-appointment', (req, res) => {
   const mailParams = {
-    to: process.env.TO_MAIL, // Your receiving email address
-    from: process.env.FROM_MAIL, // Your verified sender email address
+    to: process.env.TO_MAIL, // Receiving email address
+    from: process.env.FROM_MAIL, // Verified sender email address
     subject: `New Appointment from ${req.body.name}`,
     text: `You have a new appointment request:\n\n Name: ${req.body.name}
     \n Service Name: ${req.body.serviceName}
@@ -33,6 +34,13 @@ app.post('/schedule-appointment', (req, res) => {
 });
 
 const PORT = process.env.PORT || 3000;
+
+// Handles the routes
+app.use(express.static(path.join(__dirname, 'public')));
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
 app.listen(PORT, () => {
   console.log(`Server is listening at http://localhost:${PORT}`);
 });
