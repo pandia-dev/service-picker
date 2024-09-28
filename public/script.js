@@ -16,18 +16,18 @@ window.navigateTo = function (url, screenName) {
 function loadScriptsByScreen(path) {
     switch (path) {
         case 'appointment.html': onAppointmentInit();
-        break;
+            break;
         case 'schedule.html': onScheduleInit();
-        break;
+            break;
         case 'booking.html': onBookingInit();
-        break;
+            break;
         case 'quotation.html': onQuotationInit();
-        break;
+            break;
         case 'gallery.html': onGalleryInit();
-        break;
+            break;
         // case 'home.html': loadContent('home.html');
         // break;
-        default : break;
+        default: break;
     }
 }
 
@@ -318,9 +318,9 @@ onBookingInit = function () {
 
 /** "Quotation" Script Section */
 onQuotationInit = function () {
-    
+
     let quotationArray = [];
-    
+
     // Prepare the JSON from query params    
     const urlParam = new URLSearchParams(window.location.search);
     const quotationData = urlParam.get('data');
@@ -331,10 +331,10 @@ onQuotationInit = function () {
 
     // Loading form component from shared module
     fetch('shared/form.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('form-section').innerHTML = data;
-            });
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('form-section').innerHTML = data;
+        });
 
     // Function to display services in the table
     function displayServices() {
@@ -365,54 +365,129 @@ onQuotationInit = function () {
 
         grandTotalElement.textContent = grandTotal.toLocaleString('en-IN');
     }
+
+    // function downloadPDF() {
+    //     const { jsPDF } = window.jspdf;
+
+    //     const doc = new jsPDF();
+
+    //     doc.autoTable({
+    //         html: '#servicesTable',
+    //         startY: 10,
+    //         theme: 'grid',
+    //         styles: {
+    //             fontSize: 10,
+    //             cellPadding: 3,
+    //             halign: 'center',
+    //             valign: 'middle'
+    //         },
+    //         headStyles: {
+    //             fillColor: '#eb84e5',
+    //             textColor: '#000000'
+    //         }
+    //     });
+
+    //     doc.save('Service Quotation.pdf');
+    // }
+
+    function downloadPDF() {
+        const { jsPDF } = window.jspdf;
+
+        const doc = new jsPDF();
+
+        // Add header
+        doc.setFontSize(18);
+        doc.text('Service Quotation', 105, 15, { align: 'center' });
+
+        doc.setLineWidth(0.5); // Set line thickness
+        doc.setDrawColor(0, 0, 255); // Set line color (RGB: blue)
+        // doc.setLineDash([2, 2], 0); // Set dash pattern (2 units dash, 2 units gap)
+        doc.line(15, 20, 195, 20); // Draws a line from x: 15, y: 20 to x: 195, y: 20to x: 195, y: 20
+        doc.setDrawColor(0, 0, 255); // Set line color (RGB: blue)
+
+        // Add additional info
+        doc.setFontSize(12);
+        doc.text(`Date: ${new Date().toLocaleDateString()}`, 15, 25);
+        doc.text('Customer Name: Vinoth', 15, 35);
+        doc.text('Address: 123 Main St, Chennai, India', 15, 45);
+
+        // Add table
+        doc.autoTable({
+            html: '#servicesTable',
+            startY: 55,
+            theme: 'grid',
+            styles: {
+                fontSize: 10,
+                cellPadding: 3,
+                halign: 'center',
+                valign: 'middle'
+            },
+            headStyles: {
+                fillColor: '#eb84e5',
+                textColor: '#000000'
+            }
+        });
+
+        // Add footer
+        const pageCount = doc.internal.getNumberOfPages();
+        for (let i = 1; i <= pageCount; i++) {
+            doc.setPage(i);
+            doc.setFontSize(10);
+            doc.text(`Page ${i} of ${pageCount}`, 105, 285, { align: 'center' });
+        }
+
+        doc.save('Service Quotation.pdf');
+    }
+
+    window.downloadPDF = downloadPDF;
 }
 
 /** "Gallery" Script Section */
 onGalleryInit = function () {
-        var pswpElement = document.querySelectorAll('.pswp')[0];
-      
-        // Build items array with correct width and height
-        const items = [];
-        for(let i = 1; i < 17; i++) {
-          items.push({
+    var pswpElement = document.querySelectorAll('.pswp')[0];
+
+    // Build items array with correct width and height
+    const items = [];
+    for (let i = 1; i < 17; i++) {
+        items.push({
             src: `images/gallery (${i}).jpg`,
             w: 1200,
             h: 900
-          });
-        }
-        
-        // Define click event for each gallery item
-        var galleryElements = document.querySelectorAll('#my-gallery a');
-        galleryElements.forEach(function (el, index) {
-          el.addEventListener('click', function (event) {
+        });
+    }
+
+    // Define click event for each gallery item
+    var galleryElements = document.querySelectorAll('#my-gallery a');
+    galleryElements.forEach(function (el, index) {
+        el.addEventListener('click', function (event) {
             event.preventDefault();
-      
+
             var options = {
-              index: index, // start at clicked item
-              bgOpacity: 1,
-              showHideOpacity: true,
-              getThumbBoundsFn: function (index) {
-                // Define the thumbnail bounds
-                var thumbnail = galleryElements[index].querySelector('img'),
-                  pageYScroll = window.pageYOffset || document.documentElement.scrollTop,
-                  rect = thumbnail.getBoundingClientRect();
-      
-                return { x: rect.left, y: rect.top + pageYScroll, w: rect.width };
-              },
-              maxSpreadZoom: 1, // Restrict zoom level to 1 to avoid stretching
-              getDoubleTapZoom: function (isMouseClick, item) {
-                // Return the zoom level based on the image's original size
-                if (item.initialZoomLevel > 0.7) {
-                  return 1.5; // Double tap to zoom in
-                } else {
-                  return 1; // Double tap to zoom out
+                index: index, // start at clicked item
+                bgOpacity: 1,
+                showHideOpacity: true,
+                getThumbBoundsFn: function (index) {
+                    // Define the thumbnail bounds
+                    var thumbnail = galleryElements[index].querySelector('img'),
+                        pageYScroll = window.pageYOffset || document.documentElement.scrollTop,
+                        rect = thumbnail.getBoundingClientRect();
+
+                    return { x: rect.left, y: rect.top + pageYScroll, w: rect.width };
+                },
+                maxSpreadZoom: 1, // Restrict zoom level to 1 to avoid stretching
+                getDoubleTapZoom: function (isMouseClick, item) {
+                    // Return the zoom level based on the image's original size
+                    if (item.initialZoomLevel > 0.7) {
+                        return 1.5; // Double tap to zoom in
+                    } else {
+                        return 1; // Double tap to zoom out
+                    }
                 }
-              }
             };
-      
+
             // Initialize PhotoSwipe
             var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
             gallery.init();
-          });
-        });      
+        });
+    });
 }
