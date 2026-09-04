@@ -89,6 +89,23 @@
         padding: 1em;
         animation: fadeIn 1s ease-in-out;
     }
+
+    button {
+        display: block;
+        margin: 20px auto;
+        padding: 8px 16px;
+        font-size: 14px;
+        background-color: #24a50e;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+        background-color: #1e8e0b;
+    }
 </style>
 <h1 class="heading">Service Quotation</h1>
 <div class="content-container">
@@ -112,8 +129,8 @@
                 </tr>
             </tfoot>
         </table>
+        <button style="width: auto;" onclick="downloadPDF()">Download as PDF</button>
     </div>
     <div id="form-section">
-
     </div>
 </div>
